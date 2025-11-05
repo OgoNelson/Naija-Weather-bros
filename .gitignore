@@ -1,5 +1,6 @@
 output.txt 
 node_modules 
+mastra-integration-blog-post.md
 dist 
 .mastra 
 .env.development 

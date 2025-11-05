@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start",
-    "server": "ts-node-esm src/server.ts",
-    "server:dev": "nodemon --exec node --loader ts-node/esm src/server.ts",
-    "simple-server": "node src/simple-server.js"
+    "start": "mastra start"
   },
   "keywords": [],
   "author": "",

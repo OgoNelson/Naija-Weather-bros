@@ -8,6 +8,7 @@ import {
   completenessScorer,
   translationScorer,
 } from "./scorers/weather-scorer";
+import { a2aAgentRoute } from "./routes/a2a-agent-route";
 
 export const mastra = new Mastra({
   bundler: {
@@ -20,6 +21,7 @@ export const mastra = new Mastra({
     completenessScorer,
     translationScorer,
   },
+  server: { apiRoutes: [a2aAgentRoute] },
   storage: new LibSQLStore({
     // stores observability, scores, ... into memory storage, if it needs to persist, change to file:../mastra.db
     url: ":memory:",
@@ -38,6 +40,5 @@ export const mastra = new Mastra({
   },
 });
 
-// Comment out test function for now
-// import { testWeather } from './workflows/weather-workflow';
-// testWeather();
+// // Export A2A route for use in server
+// export { a2aAgentRoute };
