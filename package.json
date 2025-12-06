@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start"
+    "start": "npm run prestart && mastra start",
+    "prestart": "mkdir -p .mastra/output"
   },
   "keywords": [],
   "author": "",
