@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, CloudRain, Loader2 } from "lucide-react";
+import { Send, CloudRain, Loader2, Trash2 } from "lucide-react";
 import { ChatMessage } from "./ChatMessage";
 import { chatAPI } from "../services/api";
 
@@ -120,14 +120,36 @@ export function ChatInterface() {
     }
   };
 
+  const handleClearMessages = () => {
+    setMessages([
+      {
+        id: "1",
+        text: "Hello! I'm your weather assistant. I can help you with weather information, forecasts, and any weather-related questions. How can I help you today?",
+        sender: "other",
+        timestamp: new Date(),
+        senderName: "Weather AI",
+      },
+    ]);
+  };
+
   return (
-    <div className="flex flex-col h-full max-w-4xl mx-auto bg-white/95 backdrop-blur-sm shadow-2xl">
+    <div className="flex flex-col h-screen max-w-4xl mx-auto bg-white/95 backdrop-blur-sm shadow-2xl relative">
+      {/* Clear Button - Top Right Corner */}
+      <button
+        onClick={handleClearMessages}
+        className="absolute top-6 right-6 z-50 p-2 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-md transition-colors flex items-center gap-2"
+        title="Clear messages"
+      >
+        <Trash2 size={18} />
+        <span className="hidden sm:inline text-sm">Clear</span>
+      </button>
+
       {/* Header */}
       <div className="bg-gradient-to-r from-blue-500 to-sky-400 text-white px-6 py-4 shadow-md">
         <div className="flex items-center gap-3">
           <CloudRain size={28} />
           <div>
-            <h1>Naija Weather bros</h1>
+            <h1 className="text-xl font-bold">Naija Weather bros</h1>
             <p className="text-sm opacity-90">I dey for you</p>
           </div>
         </div>
@@ -140,7 +162,7 @@ export function ChatInterface() {
         ))}
         {isLoading && (
           <div className="flex justify-start">
-            <div className="max-w-xs lg:max-w-md order-1">
+            <div className="max-w-xs lg:max-w-md">
               <div className="bg-gray-200 text-gray-900 rounded-lg px-4 py-2 flex items-center gap-2">
                 <Loader2 className="animate-spin" size={16} />
                 <span>Thinking...</span>
