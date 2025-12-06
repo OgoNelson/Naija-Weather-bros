@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "mastra dev",
-    "build": "mastra build",
-    "start": "npm run build && mastra start"
+    "build": "mastra build --skip-instrumentation",
+    "prestart": "mkdir -p .mastra/output && npm run build",
+    "start": "npm run prestart && mastra start"
   },
   "keywords": [],
   "author": "",
