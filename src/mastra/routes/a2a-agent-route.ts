@@ -66,8 +66,11 @@ export const a2aAgentRoute = registerApiRoute("/a2a/agent/:agentId", {
             .join("\n") || "",
       }));
 
-      // Execute agent
-      const response = await agent.generate(mastraMessages);
+      // Execute agent with memory context
+      const response = await agent.generate(mastraMessages, {
+        threadId: contextId || `default-thread`,
+        resourceId: agentId,
+      });
       const agentText = response.text || "";
 
       // Build artifacts array
