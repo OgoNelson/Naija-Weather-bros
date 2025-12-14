@@ -87,7 +87,21 @@ export function ChatInterface() {
     setIsLoading(true);
 
     try {
-      const response = await chatAPI.sendMessage(userMessage.text);
+      // Convert messages to the format expected by the API
+      const conversationHistory = messages.map((msg) => ({
+        role: msg.sender === "user" ? "user" : "assistant",
+        parts: [
+          {
+            kind: "text",
+            text: msg.text,
+          },
+        ],
+      }));
+
+      const response = await chatAPI.sendMessage(
+        userMessage.text,
+        conversationHistory
+      );
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -121,6 +135,9 @@ export function ChatInterface() {
   };
 
   const handleClearMessages = () => {
+    // Reset the conversation context when clearing messages
+    chatAPI.resetContext();
+
     setMessages([
       {
         id: "1",
