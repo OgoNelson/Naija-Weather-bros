@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start"
+    "start": "node --import=./.mastra/output/instrumentation.mjs .mastra/output/index.mjs"
   },
   "keywords": [],
   "author": "",
