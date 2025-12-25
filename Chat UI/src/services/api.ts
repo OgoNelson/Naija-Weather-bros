@@ -42,7 +42,7 @@ function enhanceWeatherResponse(text: string): string {
     .replace(/phone/gi, "phone 📱")
     .replace(/papers/gi, "papers 📄")
     .replace(/license/gi, "license 🪪")
-    .replace(/safe/gi, "safe ✅")
+    .replace(/safe/gi, "safe ✅");
 }
 
 export interface ChatResponse {
