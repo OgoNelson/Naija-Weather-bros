@@ -58,6 +58,6 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "vite preview --host --port 4173"
+    "start": "vite preview --host --port $PORT"
   }
 }
