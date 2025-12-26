@@ -56,7 +56,7 @@ export const weatherAgent = new Agent({
         
         Use the appropriate tool based on the user's request. For travel queries, use travelWeatherTool. For general weather queries, use weatherTool.
   `,
-  model: "google/gemini-2.5-flash",
+  model: "google/gemini-2.5-flash-lite",
   tools: { weatherTool, travelWeatherTool },
   scorers: {
     toolCallAppropriateness: {
