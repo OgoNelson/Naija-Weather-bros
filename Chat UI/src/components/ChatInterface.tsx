@@ -87,21 +87,7 @@ export function ChatInterface() {
     setIsLoading(true);
 
     try {
-      // Convert messages to the format expected by the API
-      const conversationHistory = messages.map((msg) => ({
-        role: msg.sender === "user" ? "user" : "assistant",
-        parts: [
-          {
-            kind: "text",
-            text: msg.text,
-          },
-        ],
-      }));
-
-      const response = await chatAPI.sendMessage(
-        userMessage.text,
-        conversationHistory
-      );
+      const response = await chatAPI.sendMessage(userMessage.text);
 
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
